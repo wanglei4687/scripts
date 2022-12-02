@@ -1303,8 +1303,8 @@ http {
     gzip  on;
 
     server {
-        listen 8083 ssl http2;
-        listen [::]:8083 http2;
+        listen 3306 ssl http2;
+        listen [::]:3306 http2;
         server_name  $configSSLDomain;
 
         ssl_certificate       ${configSSLCertPath}/$configSSLCertFullchainFilename;
@@ -2430,8 +2430,8 @@ EOM
 
     # 增加自定义端口号
     if [[ ${isInstallNginx} == "true" ]]; then
-        configV2rayPortShowInfo=8083
-        configV2rayPortGRPCShowInfo=8083
+        configV2rayPortShowInfo=3306
+        configV2rayPortGRPCShowInfo=3306
         
         if [[ $configV2rayVlessMode == "vlessxtlstrojan" ]]; then
             configV2rayPort=443
@@ -2440,7 +2440,7 @@ EOM
         configV2rayPort="$(($RANDOM + 10000))"
         
         if [[ -n "$configV2rayVlessMode" ]]; then
-            configV2rayPort=8083
+            configV2rayPort=3306
         fi
         configV2rayPortShowInfo=$configV2rayPort
 
